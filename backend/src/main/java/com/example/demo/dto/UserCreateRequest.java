@@ -6,9 +6,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UserResponse {
-
-    private Long id;
+public class UserCreateRequest {
 
     private String steamId;
 
@@ -16,3 +14,4 @@ public class UserResponse {
 
     private String avatarUrl;
 }
+

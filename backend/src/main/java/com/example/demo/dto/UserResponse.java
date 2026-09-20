@@ -1,0 +1,16 @@
+package com.example.demo.dto;
+
+import lombok.*;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class UserResponse {
+
+    private Long id;
+    private String steamId;
+    private String username;
+    private String avatarUrl;
+}

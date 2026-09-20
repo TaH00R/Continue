@@ -9,9 +9,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UserGameResponse {
+public class UserGameCreateRequest {
 
-    private Long id;
     private Long userId;
     private Long gameId;
     private Integer playtimeMinutes;

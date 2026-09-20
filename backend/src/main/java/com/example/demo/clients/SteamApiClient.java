@@ -1,5 +1,7 @@
 package com.example.demo.clients;
 
+import com.example.demo.dto.steam.SteamGamesResponse;
+import com.example.demo.dto.steam.SteamPlayerResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -14,7 +16,7 @@ public class SteamApiClient {
     @Value("${steam.api.key}")
     private String steamApiKey;
 
-    public String getPlayerSummary(String steamId) {
+    public SteamPlayerResponse getPlayerSummary(String steamId) {
 
         return steamWebClient.get()
                 .uri(uriBuilder -> uriBuilder
@@ -23,11 +25,11 @@ public class SteamApiClient {
                         .queryParam("steamids", steamId)
                         .build())
                 .retrieve()
-                .bodyToMono(String.class)
+                .bodyToMono(SteamPlayerResponse.class)
                 .block();
     }
 
-    public String getOwnedGames(String steamId) {
+    public SteamGamesResponse getOwnedGames(String steamId) {
 
         return steamWebClient.get()
                 .uri(uriBuilder -> uriBuilder
@@ -38,7 +40,7 @@ public class SteamApiClient {
                         .queryParam("include_played_free_games", true)
                         .build())
                 .retrieve()
-                .bodyToMono(String.class)
+                .bodyToMono(SteamGamesResponse.class)
                 .block();
     }
 }
